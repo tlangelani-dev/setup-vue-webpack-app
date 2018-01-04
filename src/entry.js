@@ -1,1 +1,2 @@
-console.log('Entry Point');
+let name = 'MiWay';
+console.log(`Name: ${name}`);
