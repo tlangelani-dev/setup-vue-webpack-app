@@ -30,6 +30,7 @@ module.exports = {
     },
     devServer: {
         contentBase: path.resolve(__dirname, './../public'),
+        index: 'default.html',
         compress: true,
         port: 9001,
         overlay: true
