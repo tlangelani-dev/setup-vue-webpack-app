@@ -1,9 +1,10 @@
-const path = require('path');
+const path = require('path')
+const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 module.exports = {
     entry: './src/entry.js',
     output: {
-        path: path.resolve(__dirname, './public'),
+        path: path.resolve(__dirname, './../public'),
         filename: 'js/bundle.js'
     },
     module: {
@@ -14,7 +15,10 @@ module.exports = {
             },
             {
                 test: /\.vue$/,
-                loader: 'vue-loader'
+                loader: 'vue-loader',
+                options: {
+                    extractCSS: true // @todo
+                }
             },
             {
                 test: /\.js$/,
@@ -24,9 +28,14 @@ module.exports = {
         ]
     },
     devServer: {
-        contentBase: path.resolve(__dirname, './public'),
+        contentBase: path.resolve(__dirname, './../public'),
         compress: true,
         port: 9001,
         overlay: true
-    }
+    },
+    plugins: [
+        new ExtractTextPlugin({
+            filename: 'css/app.css'
+        })
+    ]
 };
