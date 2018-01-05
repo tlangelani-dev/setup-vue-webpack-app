@@ -18,7 +18,7 @@ module.exports = {
                 test: /\.vue$/,
                 loader: 'vue-loader',
                 options: {
-                    extractCSS: true // @todo
+                    extractCSS: process.env.NODE_ENV === 'production'
                 }
             },
             {
